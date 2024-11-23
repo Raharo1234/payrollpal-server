@@ -71,8 +71,7 @@ const configureApp = (app) => {
 	app.use("/api", apiRoutes);
 
 	mongoose.connect(config.database_url, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
+		tlsAllowInvalidCertificates: true
 	});
 
 	setInterval(() => {
