@@ -73,6 +73,8 @@ const configureApp = (app) => {
 	mongoose.connect(config.database_url, {
 		ssl: true,
 		tlsAllowInvalidCertificates: true,
+		socketTimeoutMS: 30000,
+		connectTimeoutMS: 30000
 	  }).then(() => {
 		console.log("Connection à MongoDB réussie !");
 	  }).catch((err) => {
