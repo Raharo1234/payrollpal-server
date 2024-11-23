@@ -72,8 +72,13 @@ const configureApp = (app) => {
 
 	mongoose.connect(config.database_url, {
 		ssl: true,
-		tlsAllowInvalidCertificates: false
-	});
+		tlsAllowInvalidCertificates: true,
+	  }).then(() => {
+		console.log("Connection à MongoDB réussie !");
+	  }).catch((err) => {
+		console.error("Erreur de connexion MongoDB :", err);
+	  });
+	  
 
 	setInterval(() => {
 		deleteAutoAccountsForCompany(UserEntreprise);
