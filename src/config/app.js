@@ -72,7 +72,7 @@ const configureApp = (app) => {
 
 	mongoose.connect(config.database_url, {
 		ssl: true,
-		tlsAllowInvalidCertificates: true
+		tlsAllowInvalidCertificates: false
 	});
 
 	setInterval(() => {
