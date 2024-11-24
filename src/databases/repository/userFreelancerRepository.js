@@ -25,18 +25,25 @@ class UserFreelancerRepository extends CommonUserRepository {
 		}
 	}
 
-	async getAdminValidatedFreelancers() {
+	async getAdminValidatedFreelancers(userId) {
 		try {
-			return await UserFreelancer.find({
+			const query = {
 				adminValidate: true,
 				isEmailConfirmed: true,
-			});
+			};
+	
+			if (userId) {
+				query._id = userId;
+			}
+	
+			return await UserFreelancer.find(query);
 		} catch (error) {
 			throw new Error(
 				`Erreur lors de la récupération des utilisateurs validés par l'administrateur : ${error.message}`
 			);
 		}
 	}
+	
 
 	async getAdminNotValidatedFreelancers() {
 		try {
